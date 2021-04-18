@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+<!--            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} (%F%L) - %msg%n"/>-->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"/>
+        </Console>
+        <Console name="ConsoleClient" target="SYSTEM_OUT">
+            <PatternLayout pattern="Client >> %d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="ru.geekbrains.march.chat.server.Server" level="info" additivity="true" />
+        <Logger name="ru.geekbrains.march.chat.server.ClientHandler" level="info" additivity="false" >
+            <AppenderRef ref="ConsoleClient" />
+       </Logger>
+        <Root level="FATAL" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
